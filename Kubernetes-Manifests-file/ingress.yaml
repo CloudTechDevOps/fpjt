@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
-  ingressClassName: alb
+  ingressClassName: nginx
   rules:
     - host: narni.co.in
       http:
@@ -18,13 +18,12 @@ spec:
             backend:
               service:
                 name: api
-                port:   
+                port:
                   number: 3500
           - path: /
             pathType: Prefix
             backend:
               service:
                 name: frontend
-                port: 
+                port:
                   number: 3000
-      
